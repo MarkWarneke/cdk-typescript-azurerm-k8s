@@ -37,6 +37,8 @@ export AZ_SP_CLIENT_SECRET=''`
 Run the `cdktf`
 
 ```bash
+az login
+
 cdktf synth
 cdktf diff
 cdktf deploy
