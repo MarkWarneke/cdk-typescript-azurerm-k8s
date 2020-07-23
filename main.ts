@@ -13,7 +13,7 @@ class K8SStack extends TerraformStack {
     const LOCATION = 'westeurope'
     const RG_NAME = 'mwtestmarkmitk'
     const AKS_NAME = 'mwtestmarkmitk'
-    const AKS_DNS_PREFIX = 'mwtestmarkmitk'
+    // const AKS_DNS_PREFIX = 'mwtestmarkmitk'
 
     const rgConfig: ResourceGroupConfig = {
       location: LOCATION,
@@ -39,13 +39,13 @@ class K8SStack extends TerraformStack {
       resourceGroupName: rg.name,
       servicePrincipal: [ident],
       defaultNodePool: [pool],
-      dependsOn: [rg]
+      dependsOn: [rg],
+
     };
 
     const k8s = new KubernetesCluster(this, 'k8scluster', k8sconfig)
 
     console.info(rg.name, k8s.name, provider.subscriptionId)
-
 
     const output = new TerraformOutput(this, 'k8s_name', {
       value: k8s.name
