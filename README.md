@@ -2,7 +2,7 @@
 
 Cloud Development Kit (CDK) TypeScript implementation to deploy Azure Kubernetes Service (AKS)
 
-See the blog post [markwarneke.me]()
+See the blog post [markwarneke.me](https://markwarneke.me/2020-07-23-Deploy-AKS-Kubernetes-Using-TypeScript-Terraform-CDK/)
 
 ## Prerequisites
 
