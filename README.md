@@ -27,6 +27,13 @@ Install the dependency providers from [`cdktf.json`](cdktf.json).
 cdktf get
 ```
 
+Export the used service principal in environment variables as environment variables
+
+```bash
+export AZ_SP_CLIENT_ID=''
+export AZ_SP_CLIENT_SECRET=''`
+```
+
 Run the `cdktf`
 
 ```bash
