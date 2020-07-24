@@ -1,6 +1,6 @@
 import { Construct } from 'constructs';
 import { App, TerraformStack, TerraformOutput } from 'cdktf';
-import { AzurermProvider, KubernetesCluster, KubernetesClusterConfig, KubernetesClusterDefaultNodePool, KubernetesClusterServicePrincipal, ResourceGroup, ResourceGroupConfig, DataAzurermImage, DataAzurermSubscriptions } from './.gen/providers/azurerm'
+import { AzurermProvider, KubernetesCluster, KubernetesClusterConfig, KubernetesClusterDefaultNodePool, KubernetesClusterServicePrincipal, ResourceGroup, ResourceGroupConfig } from './.gen/providers/azurerm'
 
 class K8SStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
@@ -13,7 +13,7 @@ class K8SStack extends TerraformStack {
     const LOCATION = 'westeurope'
     const RG_NAME = 'mwtestmarkmitk'
     const AKS_NAME = 'mwtestmarkmitk'
-    // const AKS_DNS_PREFIX = 'mwtestmarkmitk'
+    const AKS_DNS_PREFIX = 'mwtestmarkmitk'
 
     const rgConfig: ResourceGroupConfig = {
       location: LOCATION,
@@ -44,12 +44,13 @@ class K8SStack extends TerraformStack {
     };
 
     const k8s = new KubernetesCluster(this, 'k8scluster', k8sconfig)
-
-    console.info(rg.name, k8s.name, provider.subscriptionId)
+    
 
     const output = new TerraformOutput(this, 'k8s_name', {
       value: k8s.name
     });
+    
+    console.info(rg.name, k8s.name, provider.subscriptionId, output.friendlyUniqueId)
 
   }
 }
